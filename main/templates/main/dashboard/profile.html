@@ -1,0 +1,18 @@
+{% extends 'main/dashboard_base.html' %}
+
+{% block content %}
+    <h1>سلام {{ child.full_name }}، خوش آمدید!</h1>
+    <p>در اینجا می‌توانید اطلاعات کامل کودک خود را مشاهده کنید.</p>
+
+    <div class="profile-box">
+        <h2>مشخصات کودک</h2>
+        <ul>
+            <li><strong>نام:</strong> {{ child.full_name }}</li>
+            <li><strong>تاریخ تولد:</strong> {{ child.birth_date }}</li>
+            <li><strong>سن:</strong> {{ child.age }}</li>
+            <li><strong>کلاس:</strong> {{ child.class_name }}</li>
+            <li><strong>والد:</strong> {{ child.user.get_full_name }}</li>
+        </ul>
+    </div>
+{% endblock %}
+

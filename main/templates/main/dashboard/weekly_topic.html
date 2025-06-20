@@ -1,0 +1,15 @@
+{% extends 'main/dashboard_base.html' %}
+
+{% block content %}
+<div class="content-box">
+  <h2>موضوع هفته ✨</h2>
+  {% if topic %}
+    <div class="topic-box">
+      <p>{{ topic.content|linebreaks }}</p>
+    </div>
+  {% else %}
+    <p>موضوعی برای این هفته ثبت نشده است.</p>
+  {% endif %}
+</div>
+{% endblock %}
+

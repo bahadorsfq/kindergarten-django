@@ -1,0 +1,58 @@
+{% extends 'main/dashboard_base.html' %}
+
+{% block content %}
+<div class="content-box">
+  <h2>نمودار پیشرفت - {{ activity_display }}</h2>
+  <canvas id="progressChart"></canvas>
+</div>
+
+
+{% if dates and scores %}
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const labels = JSON.parse('{{ dates|escapejs }}');
+    const data = JSON.parse('{{ scores|escapejs }}');
+  
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "{{ activity_display }}",
+          data: data,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+  </script>
+
+{% else %}
+<p>اطلاعاتی برای نمایش نمودار موجود نیست.</p>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

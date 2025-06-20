@@ -1,0 +1,40 @@
+{% extends 'main/dashboard_base.html' %}
+{% block content %}
+{% if media_type == "video" %}
+    <h2>ویدئوها</h2>
+{% else %}
+    <h2>تصاویر</h2>
+{% endif %}
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    {% for media in media_files %}
+        {% if media.media_type == "image" %}
+            <img src="{{ media.media_file.url }}" alt="تصویر" style="width: 300px; border-radius: 12px;">
+        {% elif media.media_type == "video" %}
+            <video controls style="width: 300px; border-radius: 12px;">
+                <source src="{{ media.media_file.url }}">
+                مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+            </video>
+        {% endif %}
+        {% empty %}
+        {% if media_type == "video" %}
+            <p>هیچ ویدئویی برای کلاس شما ثبت نشده است.</p>
+        {% else %}
+            <p>هیچ تصویری برای کلاس شما ثبت نشده است.</p>
+        {% endif %}
+    {% endfor %}
+    
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروفایل کودک</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/dashboard.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- سایدبار -->
+        <aside class="sidebar">
+            <div class="profile-image">
+                {% if child_profile %}
+                    {% if child_profile.avatar %}
+                        <img src="{{ child_profile.avatar.url }}" alt="عکس کودک">
+                    {% else %}
+                        <img src="{% static 'main/images/kid-avatar.png' %}" alt="عکس کودک پیش فرض">
+                    {% endif %}
+                    <p class="child-name">{{ child_profile.name }}</p>
+                {% else %}
+                    <img src="{% static 'main/images/kid-avatar.png' %}" alt="عکس کودک پیش فرض">
+                    <p class="child-name">نام کودک</p>
+                {% endif %}
+            </div>       
+        
+            <ul class="menu">
+                <li><a href="{% url 'profile' %}">👤 پروفایل</a></li>
+                <li class="has-submenu">
+                    <a href="{% url 'progress' %}">📈 نمودار پیشرفت</a>
+                    <ul class="submenu" data-parent="progress">
+                        <li data-tab="yoga"><a href="{% url 'progress' %}?activity=یوگا">یوگا</a>
+                        </li>
+                        <li data-tab="language"><a href="{% url 'progress' %}?activity=زبان عمومی">زبان عمومی</a>
+                        </li>
+                        <li data-tab="gardening"><a href="{% url 'progress' %}?activity=باغبانی">باغبانی</a>
+                        </li>
+                        <li data-tab="cooking"><a href="{% url 'progress' %}?activity=آشپزی">آشپزی</a>
+                        </li>
+                        <li data-tab="storytelling"><a href="{% url 'progress' %}?activity=قصه خوانی">قصه‌خوانی</a>
+                        </li>
+                        <li data-tab="singing hymns"><a href="{% url 'progress' %}?activity=سرود خوانی">سرودخوانی</a>
+                        </li>
+                        <li data-tab="rain of thoughts"><a href="{% url 'progress' %}?activity=بارش افکار">بارش افکار</a>
+                        </li>
+                        <li data-tab="game"><a href="{% url 'progress' %}?activity=بازی">بازی</a>
+                        </li>
+                        <li data-tab="paint"><a href="{% url 'progress' %}?activity=نقاشی">نقاشی</a>
+                        </li>
+                        <li data-tab="social etiquette"><a href="{% url 'progress' %}?activity=آداب اجتماعی">آداب اجتماعی</a>
+                        </li>
+                        <li data-tab="legality"><a href="{% url 'progress' %}?activity=قانونمندی">قانونمندی</a>
+                        </li>
+                        <li data-tab="threadable"><a href="{% url 'progress' %}?activity=نخ کردنی">نخ کردنی</a>
+                        </li>
+                        <li data-tab="science concepts"><a href="{% url 'progress' %}?activity=مفاهیم علوم">مفاهیم علوم</a>
+                        </li>
+                        <li data-tab="pottery workshop"><a href="{% url 'progress' %}?activity=کارگاه سفال">کارگاه سفال</a>
+                        </li>
+                        <li data-tab="mathematical concepts"><a href="{% url 'progress' %}?activity=مفاهیم ریاضی">مفاهیم ریاضی</a>
+                        </li>
+                        <li data-tab="printing workshop"><a href="{% url 'progress' %}?activity=کارگاه چاپ">کارگاه چاپ</a>
+                        </li>
+                        <li data-tab="manual work"><a href="{% url 'progress' %}?activity=کار دستی">کار دستی</a>
+                        </li>
+                        <li data-tab="creative display"><a href="{% url 'progress' %}?activity=نمایش خلاق">نمایش خلاق</a>
+                        </li>
+                    </ul>
+                </li>
+            
+                <li class="has-submenu">
+                    <a href="{% url 'progress' %}">🎥گزاش تصویری</a>
+                    <ul class="submenu" data-parent="progress">
+                      <li><a href="{% url 'media_gallery' media_type='image' %}">تصاویر</a></li>
+                      <li><a href="{% url 'media_gallery' media_type='video' %}">ویدئوها</a></li>
+                    </ul>
+                </li>
+                  
+                
+                    <!-- سایر گزینه‌ها -->
+                
+                <li><a href="{% url 'food_schedule' %}">🍔برنامه غذایی</a></li>
+                <li><a href="{% url 'weekly_topic' %}">🎨 موضوع هفته</a></li>
+                <li><a href="{% url 'financial' %}">💰 مالی</a></li>
+                <li><a href="{% url 'logout' %}">🚪 خروج</a></li>
+            </ul>            
+        </aside>
+       
+        <!-- محتوای اصلی -->
+        <main class="main-content">
+            <h1>سلام {{ child.full_name }}، خوش آمدید!</h1>
+                
+                    <!-- هر فیلد دیگه‌ای که در مدل دارید می‌تونید اضافه کنید -->
+            <div class="main-content">
+                {% block content %}
+                {% endblock %}
+                    </div>       
+                </ul>
+            </div>            
+<div class="tab-content" id="progress" style="display:none;">محتوای نمودار پیشرفت</div>
+<div class="tab-content" id="gallery" style="display:none;">محتوای گزارش تصویری</div>
+<div class="tab-content" id="meal" style="display:none;">محتوای برنامه غذایی</div>
+<div class="tab-content" id="topic" style="display:none;">محتوای موضوع هفته</div>
+<div class="tab-content" id="finance" style="display:none;">محتوای مالی</div>
+        </main>
+    </div>
+    
+
+</body>
+</html>

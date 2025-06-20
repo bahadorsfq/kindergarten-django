@@ -1,0 +1,27 @@
+{% extends 'main/dashboard_base.html' %}
+
+{% block content %}
+<h2>برنامه غذایی هفتگی</h2>
+
+<table class="food-table">
+    <thead>
+        <tr>
+            <th>روز</th>
+            <th>صبحانه</th>
+            <th>نهار</th>
+            <th>عصرانه</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in food_schedule %}
+        <tr>
+            <td>{{ item.day }}</td>
+            <td>{{ item.breakfast }}</td>
+            <td>{{ item.lunch }}</td>
+            <td>{{ item.snack }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

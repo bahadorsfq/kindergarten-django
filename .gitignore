@@ -1,0 +1,18 @@
+# Python
+*.pyc
+__pycache__/
+
+# Django
+db.sqlite3
+.env
+
+# Logs
+*.log
+
+# Editors
+.vscode/
+.idea/
+
+# Media and static (اختیاری، بسته به تصمیم تو)
+media/
+staticfiles/

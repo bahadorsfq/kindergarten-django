@@ -1,0 +1,221 @@
+/* تنظیم فونت و پس‌زمینه کلی صفحه */
+body {
+
+    font-family: 'Vazirmatn', sans-serif;  /* فونت فارسی */
+    margin: 0;
+    padding: 0;
+    background-color: #ffb8b8;
+}
+
+/* ظرف کلی داشبورد که شامل سایدبار و محتوای اصلیه */
+.dashboard-container {
+    display: flex;
+    height: 100vh;  /* کل ارتفاع صفحه رو بگیره */
+}
+
+/* === سایدبار سمت راست (در زبان فارسی راست به چپ) === */
+.sidebar {
+    width: 220px;
+    background-color: #ffe066;  /* زرد روشن بانمک */
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);  /* سایه نرم کناری */
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;  /* گوشه‌های گرد برای حالت کارتونی */
+}
+
+/* استایل تصویر پروفایل کودک در سایدبار */
+.profile-image img {
+    width: 100%;
+    border-radius: 50%;  /* دایره‌ای شدن تصویر */
+    margin-bottom: 20px;
+    border: 5px solid white;  /* قاب سفید دور عکس */
+}
+
+/* حذف نقطه‌های لیست از منو */
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+/* فاصله بین آیتم‌های منو */
+.menu li {
+    margin-bottom: 15px;
+}
+
+/* لینک‌های داخل منو */
+.menu a {
+    text-decoration: none;
+    color: #5a4100;  /* قهوه‌ای کودکانه */
+    font-size: 18px;
+    padding: 8px 12px;
+    display: block;
+    background-color: #fff4c2;  /* زرد خیلی روشن */
+    border-radius: 12px;  /* گرد کردن گوشه‌ها */
+    transition: all 0.3s ease;  /* افکت نرم برای هاور */
+}
+
+/* حالت فعال یا هاور لینک‌ها */
+.menu a:hover, .menu a.active {
+    background-color: #ffdd57;
+    color: #000;
+    font-weight: bold;
+}
+
+/* === محتوای اصلی سمت چپ === */
+.main-content {
+    background: url('images/main-bg.jpg') no-repeat center center;
+    background-size: cover;
+    flex: 1;  /* فضای باقی‌مانده رو پر کنه */
+    padding: 40px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    font-size: 1.2rem;
+    overflow-y: auto;  /* اگر محتوا زیاد شد اسکرول بخوره */
+}
+
+/* عنوان خوش‌آمدگویی */
+.main-content h1 {
+    font-size: 28px;
+    color: #ff7a5c;  /* نارنجی مایل به قرمز کودکانه */
+}
+
+/* متن عمومی داخل صفحه */
+.main-content p {
+    font-size: 18px;
+    color: #444;
+}
+
+/* استایل آیتم‌های دارای زیرمنو */
+.sidebar .menu .has-submenu {
+    position: relative;
+}
+
+/* زیرمنو مخفی به صورت پیش‌فرض */
+.sidebar .menu .submenu {
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: 0;
+    background-color: #fff9db;
+    border: 1px solid #ffd940;
+    padding: 5px 10px;
+    z-index: 10;
+    width: max-content;
+    font-size: 12px;
+    line-height: 1.8;
+    border-radius: 10px;
+}
+
+/* آیتم‌های زیرمنو */
+.sidebar .menu .submenu li {
+    list-style: none;
+    padding: 2px 4px;       /* padding عمودی کمتر شد */
+    white-space: nowrap;
+    font-size: 18px;        /* فونت کمی کوچیک‌تر */
+    line-height: 0.5;       /* فاصله خطوط کمتر */
+}
+
+/* نمایش زیرمنو هنگام هاور */
+.sidebar .menu .has-submenu:hover .submenu {
+    display: block;
+}
+.child-name {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+/*استایل کارتونی گالری */
+.media-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .media-item {
+    background-color: #fff4e6;
+    border: 3px dashed #ff9f1c;
+    border-radius: 20px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .media-item img,
+  .media-item video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .report-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .report-card {
+    background: #fff9e6;
+    border-radius: 16px;
+    padding: 12px;
+    width: 300px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .report-image, .report-video {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+  .has-submenu > .submenu {
+    display: none;
+    padding-left: 1rem;
+}
+.has-submenu:hover > .submenu {
+    display: block;
+}
+.submenu li a {
+    font-size: 0.9rem;
+    color: #555;
+    display: block;
+    padding: 4px 0;
+    transition: color 0.3s;
+}
+.submenu li a:hover {
+    color: #007bff;
+}
+ 
+.topic-box {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 16px;
+    font-family: 'Vazir', sans-serif;
+    font-size: 1.1rem;
+    line-height: 2;
+    direction: rtl;
+  }
+  
+  .food-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.food-table th, .food-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.food-table th {
+    background-color: #f9e79f;
+    color: #333;
+}

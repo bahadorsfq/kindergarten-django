@@ -1,0 +1,32 @@
+{% extends 'main/dashboard_base.html' %}
+
+{% block content %}
+<h2>💰 گزارش مالی</h2>
+<table border="1" style="width:100%; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th>موضوع</th>
+      <th>توضیحات</th>
+      <th>تاریخ</th>
+      <th>مبلغ</th>
+      <th>پرداخت</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in records %}
+    <tr>
+      <td>{{ record.title }}</td>
+      <td>{{ record.description }}</td>
+      <td>{{ record.date }}</td>
+      <td>{{ record.amount }} تومان</td>
+      <td>{% if record.is_paid %}✅{% else %}❌{% endif %}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">هیچ رکورد مالی وجود ندارد.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
+
+
